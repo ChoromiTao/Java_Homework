@@ -1,28 +1,38 @@
 import java.util.Random;
-import java.util.Scanner;
 
 public class Hometask_1_1 {
     public static void main(String[] args){
         int i = new Random().nextInt(2000);
-        short[] array_max_value;
-        short[] array_min_value;
-//        Scanner new_scanner = new Scanner(System.in);
+        int limit_min_short = Short.MIN_VALUE;
+        int limit_max_short = Short.MAX_VALUE;
+        int[] array_max_value = new int[limit_max_short];
+        int[] array_min_value = new int[Math.abs(limit_min_short)];
         System.out.println("случайное сгенерированное число: " + i);
-        System.out.println("номер старшего значащего бита выпавшего числа: " + older_byte(i));
-        System.out.println();
-
+        System.out.println("номер старшего значащего бита этого выпавшего числа: " + older_byte(i));
+        arr_max_value(array_max_value, i, older_byte(i));
+        arr_min_value(array_min_value, i, older_byte(i));
     }
     public static int older_byte(int i){
         String a = Integer.toBinaryString(i);
         int new_length = a.length();
         return new_length;
     }
-    public  static short[] arr_max_value(short[] array_max_value){
-        return array_max_value;
+    public static void arr_max_value(int[] array_max_value, int i, int new_length){
+        System.out.println("Значения, которые кратные n числа в диапазоне от i до Short.MAX_VALUE: ");
+        for (int j = i, k = 0; j < (Short.MAX_VALUE) & new_length %j == 0; j++) {
+            array_max_value[k] = j;
+            k ++;
+            System.out.println(array_max_value[k]);
+        }
     }
 
-    public static short[] arr_min_value(short[] array_min_value){
-        return array_min_value;
+    public static void arr_min_value(int[] array_min_value,int i, int new_length){
+        System.out.println("Значения, которые все некратные n числа в диапазоне от Short.MIN_VALUE до i: ");
+        for (int j = Short.MIN_VALUE, k = 0; j < i & new_length % j != 0; j++) {
+            array_min_value[k] = j;
+            k++;
+            System.out.println(array_min_value[k]);
+        }
     }
 }
 
