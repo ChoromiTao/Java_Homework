@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class Hometask_3_1 {
@@ -9,8 +10,12 @@ public class Hometask_3_1 {
         ArrayList<Integer> RandomList = fill_array(length);
         printArray(RandomList);
         ArrayList<Integer> RemovingArray = remover_even_number(RandomList);
+        System.out.println("Из полученного массива удалены чётные числа: ");
         printArray(RemovingArray);
-//        printArray(RandomList);
+        System.out.println("Минимальное значение изначального массива: " + Collections.min(RandomList));
+        System.out.println("Максмальное значение изначального массива: " + Collections.max(RandomList));
+        int median_number = median_number(RandomList, length);
+        System.out.println("Среднее значение минимального и максимального: " + median_number);
     }
     public static ArrayList<Integer> fill_array(int length){
         ArrayList<Integer> fillingList = new ArrayList<Integer>(length);
@@ -26,20 +31,14 @@ public class Hometask_3_1 {
         }
         ArrayList<Integer> removingList = new ArrayList<>(length);
         for (int i = 0; i < arrayList.size(); i++) {
-            if (arrayList.get(i)%2 != 0 && arrayList.get(i) !=0){
-                removingList.add(arrayList.get(i));
-            }
+            if (arrayList.get(i)%2 != 0 && arrayList.get(i) !=0) removingList.add(arrayList.get(i));
         }
         return removingList;
     }
-    public static void maximal_number(ArrayList<Integer> arrayList){
-
-    }
-    public static void minimal_number(ArrayList<Integer> arrayList){
-
-    }
-    public static void median_number(ArrayList<Integer> arrayList){
-
+    public static int median_number(ArrayList<Integer> arrayList, int length){
+        Collections.sort(arrayList);
+        int median_number = (arrayList.get(0)+arrayList.get(length-1))/2;
+        return median_number;
     }
     public static void printArray(ArrayList<Integer> printingArray) {
         printingArray.forEach(n -> System.out.print(n + " "));
