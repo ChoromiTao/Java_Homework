@@ -1,8 +1,11 @@
 package org.example;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Scanner;
 
-public class Testing_code {
+public class Hometask_5_2 {
     public static void main(String[] args) {
         HashMap<String, ArrayList<String>> contacts = new HashMap<>();
 
